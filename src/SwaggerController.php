@@ -10,24 +10,25 @@ use Elephox\Http\Response;
 use Elephox\Mimey\MimeType;
 use Elephox\Web\Routing\Attribute\Controller;
 use Elephox\Web\Routing\Attribute\Http\Get;
-use Elephox\Web\Routing\Contract\Router;
+use JsonException;
 
 #[Controller("swagger")]
 readonly class SwaggerController {
 	private Directory $distDirectory;
-	private Router $router;
 
-	public function __construct() {
+	public function __construct(
+		private OpenApiSpecGenerator $specGenerator,
+	) {
 		$this->distDirectory = new Directory(Path::join(dirname(__DIR__), "static", "swagger-ui-4.18.2", "dist"));
 	}
 
-	#[Get]
+	#[Get, Get("/")]
 	public function index(): ResponseBuilder
 	{
 		return Response::build()->redirect("/swagger/index.html", true);
 	}
 
-	#[Get("/{filename}")]
+	#[Get("{filename}")]
 	public function file(string $filename): ResponseBuilder
 	{
 		$response = Response::build()->ok();
@@ -43,35 +44,19 @@ readonly class SwaggerController {
 		return $response->fileBody($file);
 	}
 
-	#[Get("/v1/swagger.json")]
+	/**
+	 * @throws JsonException
+	 */
+	#[Get("spec.json")]
 	public function spec(): ResponseBuilder
 	{
 		return Response::build()
 			->ok()
-			->jsonBody([
-				"openapi" => "3.0.0",
-				"info" => [
-					"title" => "My API",
-					"version" => "1.0"
-				],
-				"paths" => [
-					"/" => [
-						"get" => [
-							"operationId" => "list",
-							"summary" => "List something",
-							"responses" => [
-								"200" => [
-									"description" => "200 OK",
-								]
-							]
-						]
-					]
-				]
-			]);
+			->jsonBody($this->specGenerator->getSpec());
 	}
 
 	private function getSwaggerSpecUrl(): string {
-		return "/swagger/v1/swagger.json";
+		return "/swagger/spec.json";
 	}
 
 	private function generateInitializerScript(): string {
