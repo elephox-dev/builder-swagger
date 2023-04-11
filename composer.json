@@ -1,0 +1,14 @@
+{
+    "name": "elephox/builder-swagger",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.2 <8.4",
+        "elephox/web": "dev-develop"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elephox\\Builder\\Swagger\\": "src/"
+        }
+    }
+}
