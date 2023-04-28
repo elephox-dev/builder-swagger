@@ -1,5 +1,8 @@
 {
     "name": "elephox/builder-swagger",
+    "description": "Adds an auto-generated API client website using Swagger to your Elephox API",
+    "license": "MIT",
+    "type": "library",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
