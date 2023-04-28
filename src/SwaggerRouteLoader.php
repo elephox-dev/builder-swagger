@@ -7,7 +7,7 @@ use Elephox\DI\Contract\Resolver;
 use Elephox\Web\Routing\ClassRouteLoader;
 
 readonly class SwaggerRouteLoader extends ClassRouteLoader {
-	public function __construct(Resolver $resolver) {
-		parent::__construct(SwaggerController::class, $resolver);
+	public function __construct() {
+		parent::__construct(SwaggerController::class);
 	}
 }
