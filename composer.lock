@@ -4,134 +4,120 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7fd612b523a66230b6168e1caf6a4955",
+    "content-hash": "e2fdfa82049f6f0f4d6fcecc2c1b2df7",
     "packages": [
         {
-            "name": "elephox/autoloading",
+            "name": "elephox/framework",
             "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/elephox-dev/autoloading.git",
-                "reference": "008f04571b39f22ec485d65bcc6e4f2141e32f88"
+                "url": "https://github.com/elephox-dev/framework.git",
+                "reference": "4f966d220a63084dbc738619daa88dc9583e2eec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/autoloading/zipball/008f04571b39f22ec485d65bcc6e4f2141e32f88",
-                "reference": "008f04571b39f22ec485d65bcc6e4f2141e32f88",
+                "url": "https://api.github.com/repos/elephox-dev/framework/zipball/4f966d220a63084dbc738619daa88dc9583e2eec",
+                "reference": "4f966d220a63084dbc738619daa88dc9583e2eec",
                 "shasum": ""
             },
             "require": {
-                "elephox/collection": "dev-develop",
-                "elephox/files": "dev-develop",
-                "elephox/oor": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "psr/container": "^2.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Autoloading\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox auto loading library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-10T10:21:57+00:00"
-        },
-        {
-            "name": "elephox/collection",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/collection.git",
-                "reference": "2b16dffa1f612bcf8762b97ed6e950ba5c738d2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/collection/zipball/2b16dffa1f612bcf8762b97ed6e950ba5c738d2b",
-                "reference": "2b16dffa1f612bcf8762b97ed6e950ba5c738d2b",
-                "shasum": ""
-            },
-            "require": {
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "shortcuts.php"
-                ],
-                "psr-4": {
-                    "Elephox\\Collection\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox collection library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-11T05:25:12+00:00"
-        },
-        {
-            "name": "elephox/configuration",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/configuration.git",
-                "reference": "900628d16aaf31b8964f08ebd7d386006f463320"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/configuration/zipball/900628d16aaf31b8964f08ebd7d386006f463320",
-                "reference": "900628d16aaf31b8964f08ebd7d386006f463320",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "elephox/files": "dev-develop",
-                "elephox/oor": "dev-develop",
-                "elephox/support": "dev-develop",
+                "elephox/mimey": "^4.0",
+                "ext-ctype": "*",
                 "ext-json": "*",
+                "ext-mbstring": "*",
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "php": "^8.2 <8.4",
+                "psr/cache": "^3.0",
+                "psr/clock": "^1.0",
+                "psr/container": "^2.0",
+                "psr/http-message": "^1.1",
+                "psr/log": "^3.0",
+                "ricardoboss/php-console-logger": "^2.4",
+                "symfony/process": "^6.2",
                 "vlucas/phpdotenv": "^5.5"
+            },
+            "provide": {
+                "psr/cache-implementation": "3.0",
+                "psr/clock-implementation": "1.0",
+                "psr/container-implementation": "2.0",
+                "psr/http-message-implementation": "1.1",
+                "psr/log-implementation": "3.0"
+            },
+            "replace": {
+                "elephox/autoloading": "self.version",
+                "elephox/cache": "self.version",
+                "elephox/clock": "self.version",
+                "elephox/collection": "self.version",
+                "elephox/configuration": "self.version",
+                "elephox/console": "self.version",
+                "elephox/di": "self.version",
+                "elephox/events": "self.version",
+                "elephox/files": "self.version",
+                "elephox/http": "self.version",
+                "elephox/logging": "self.version",
+                "elephox/oor": "self.version",
+                "elephox/stream": "self.version",
+                "elephox/support": "self.version",
+                "elephox/web": "self.version"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.9",
+                "elephox/builder-whoops-handler": "dev-develop",
+                "elephox/builder-whoops-middleware": "dev-develop",
+                "elephox/composer-module-sync": "^1.5",
+                "ergebnis/composer-normalize": "^2.31",
+                "friendsofphp/php-cs-fixer": "^3.16",
+                "infection/infection": "^0.26",
+                "mockery/mockery": "^1.5",
+                "nunomaduro/collision": "^6.4",
+                "nyholm/psr7": "^1.8",
+                "php-http/psr7-integration-tests": "^1.2",
+                "phpbench/phpbench": "^1.2",
+                "phpunit/phpunit": "^9.6",
+                "psalm/plugin-phpunit": "^0.16",
+                "roave/no-leaks": "^1.4",
+                "vimeo/psalm": "^5.9"
+            },
+            "suggest": {
+                "ext-fileinfo": "To get the mime type of a file"
             },
             "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-develop": "0.4.x-dev",
-                    "dev-main": "1.x-dev"
+                    "release/0.3": "0.3.x-dev",
+                    "release/0.4": "0.4.x-dev",
+                    "release/0.5": "0.5.x-dev",
+                    "release/0.6": "0.6.x-dev",
+                    "release/0.7": "0.7.x-dev",
+                    "release/0.8": "0.8.x-dev",
+                    "release/0.9": "0.9.x-dev"
+                },
+                "module-sync": {
+                    "repository-base": "https://github.com/elephox-dev/"
                 }
             },
             "autoload": {
+                "files": [
+                    "modules/Collection/shortcuts.php",
+                    "modules/OOR/shortcuts.php"
+                ],
                 "psr-4": {
-                    "Elephox\\Configuration\\": "src/"
+                    "Elephox\\DI\\": "modules/DI/src/",
+                    "Elephox\\OOR\\": "modules/OOR/src/",
+                    "Elephox\\Web\\": "modules/Web/src/",
+                    "Elephox\\Http\\": "modules/Http/src/",
+                    "Elephox\\Cache\\": "modules/Cache/src/",
+                    "Elephox\\Clock\\": "modules/Clock/src/",
+                    "Elephox\\Files\\": "modules/Files/src/",
+                    "Elephox\\Events\\": "modules/Events/src/",
+                    "Elephox\\Stream\\": "modules/Stream/src/",
+                    "Elephox\\Console\\": "modules/Console/src/",
+                    "Elephox\\Logging\\": "modules/Logging/src/",
+                    "Elephox\\Support\\": "modules/Support/src/",
+                    "Elephox\\Collection\\": "modules/Collection/src/",
+                    "Elephox\\Autoloading\\": "modules/Autoloading/src/",
+                    "Elephox\\Configuration\\": "modules/Configuration/src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -144,303 +130,13 @@
                     "email": "contact@ricardoboss.de"
                 }
             ],
-            "description": "Elephox configuration library.",
+            "description": "A type-safe PHP framework.",
+            "homepage": "https://elephox.dev",
             "support": {
                 "issues": "https://github.com/elephox-dev/framework/issues",
                 "source": "https://github.com/elephox-dev/framework"
             },
-            "time": "2023-04-11T05:11:20+00:00"
-        },
-        {
-            "name": "elephox/console",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/console.git",
-                "reference": "6f8832fbf5f0e9de959643ad6369122c4f68cea0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/console/zipball/6f8832fbf5f0e9de959643ad6369122c4f68cea0",
-                "reference": "6f8832fbf5f0e9de959643ad6369122c4f68cea0",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/autoloading": "dev-develop",
-                "elephox/collection": "dev-develop",
-                "elephox/configuration": "dev-develop",
-                "elephox/di": "dev-develop",
-                "elephox/files": "dev-develop",
-                "elephox/logging": "dev-develop",
-                "elephox/support": "dev-develop",
-                "ext-ctype": "*",
-                "ext-mbstring": "*",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Console\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox console library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-10T10:21:57+00:00"
-        },
-        {
-            "name": "elephox/di",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/di.git",
-                "reference": "ccb752c535b91d37c70aca2eed3e942238affdf1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/di/zipball/ccb752c535b91d37c70aca2eed3e942238affdf1",
-                "reference": "ccb752c535b91d37c70aca2eed3e942238affdf1",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "psr/container": "^2.0"
-            },
-            "provide": {
-                "psr/container-implementation": "2.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\DI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox dependency injection library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-11T05:30:20+00:00"
-        },
-        {
-            "name": "elephox/events",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/events.git",
-                "reference": "fd20a8133bd4fceb8a02ae5cf9eab96b10588f0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/events/zipball/fd20a8133bd4fceb8a02ae5cf9eab96b10588f0b",
-                "reference": "fd20a8133bd4fceb8a02ae5cf9eab96b10588f0b",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Events\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox events library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-03T15:48:35+00:00"
-        },
-        {
-            "name": "elephox/files",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/files.git",
-                "reference": "6aef52eee37d66400ae0b21bdbcc672c6350895e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/files/zipball/6aef52eee37d66400ae0b21bdbcc672c6350895e",
-                "reference": "6aef52eee37d66400ae0b21bdbcc672c6350895e",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "elephox/events": "dev-develop",
-                "elephox/mimey": "^4.0",
-                "elephox/stream": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Files\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox files library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-05T00:56:23+00:00"
-        },
-        {
-            "name": "elephox/http",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/http.git",
-                "reference": "d3dd887ff27c16e848a9799e446333a78d484510"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/http/zipball/d3dd887ff27c16e848a9799e446333a78d484510",
-                "reference": "d3dd887ff27c16e848a9799e446333a78d484510",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "elephox/files": "dev-develop",
-                "elephox/mimey": "^4.0",
-                "elephox/oor": "dev-develop",
-                "elephox/stream": "dev-develop",
-                "elephox/support": "dev-develop",
-                "ext-mbstring": "*",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "psr/http-message": "^1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "nyholm/psr7": "^1.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Http\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox HTTP library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-11T05:10:43+00:00"
-        },
-        {
-            "name": "elephox/logging",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/logging.git",
-                "reference": "720272be0ac4fa1776c28a4ac4919102d000931b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/logging/zipball/720272be0ac4fa1776c28a4ac4919102d000931b",
-                "reference": "720272be0ac4fa1776c28a4ac4919102d000931b",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/stream": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "psr/log": "^3.0",
-                "ricardoboss/php-console-logger": "^2.4"
-            },
-            "provide": {
-                "psr/log-implementation": "3.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Logging\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox Logging library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-10T10:24:14+00:00"
+            "time": "2023-10-31T21:27:10+00:00"
         },
         {
             "name": "elephox/mimey",
@@ -495,195 +191,6 @@
                 "source": "https://github.com/elephox-dev/mimey/tree/4.0.5"
             },
             "time": "2023-02-21T14:45:43+00:00"
-        },
-        {
-            "name": "elephox/oor",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/oor.git",
-                "reference": "2bbf4be848f2ed0603efda45e57017220b489f4f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/oor/zipball/2bbf4be848f2ed0603efda45e57017220b489f4f",
-                "reference": "2bbf4be848f2ed0603efda45e57017220b489f4f",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/collection": "dev-develop",
-                "php": "^8.2 <8.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "shortcuts.php"
-                ],
-                "psr-4": {
-                    "Elephox\\OOR\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox Object-Oriented Revolution library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-11T05:25:39+00:00"
-        },
-        {
-            "name": "elephox/stream",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/stream.git",
-                "reference": "8802b87044ecee1da8f4174b1fd6f4e53d49ecfe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/stream/zipball/8802b87044ecee1da8f4174b1fd6f4e53d49ecfe",
-                "reference": "8802b87044ecee1da8f4174b1fd6f4e53d49ecfe",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/oor": "dev-develop",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "psr/http-message": "^1.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox Stream library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-04T12:31:15+00:00"
-        },
-        {
-            "name": "elephox/support",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/support.git",
-                "reference": "2e893e58ec85a6b241ffbf143675115ad43c7514"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/support/zipball/2e893e58ec85a6b241ffbf143675115ad43c7514",
-                "reference": "2e893e58ec85a6b241ffbf143675115ad43c7514",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/mimey": "^4.0",
-                "elephox/oor": "dev-develop",
-                "php": "^8.2 <8.4"
-            },
-            "suggest": {
-                "ext-fileinfo": "To get the mime type of a file"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Support\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox support library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-05T00:41:52+00:00"
-        },
-        {
-            "name": "elephox/web",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elephox-dev/web.git",
-                "reference": "fc4e0c5a8596f66dee5d6aaab1aeaee1b836aa0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/web/zipball/fc4e0c5a8596f66dee5d6aaab1aeaee1b836aa0c",
-                "reference": "fc4e0c5a8596f66dee5d6aaab1aeaee1b836aa0c",
-                "shasum": ""
-            },
-            "require": {
-                "elephox/autoloading": "dev-develop",
-                "elephox/collection": "dev-develop",
-                "elephox/configuration": "dev-develop",
-                "elephox/console": "dev-develop",
-                "elephox/di": "dev-develop",
-                "elephox/files": "dev-develop",
-                "elephox/http": "dev-develop",
-                "elephox/mimey": "^4.0",
-                "elephox/oor": "dev-develop",
-                "elephox/support": "dev-develop",
-                "ext-mbstring": "*",
-                "jetbrains/phpstorm-attributes": "^1.0",
-                "php": "^8.2 <8.4",
-                "symfony/process": "^6.2"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elephox\\Web\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ricaro Boss",
-                    "email": "contact@ricardoboss.de"
-                }
-            ],
-            "description": "Elephox Web library.",
-            "support": {
-                "issues": "https://github.com/elephox-dev/framework/issues",
-                "source": "https://github.com/elephox-dev/framework"
-            },
-            "time": "2023-04-11T05:30:20+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -863,6 +370,103 @@
                 }
             ],
             "time": "2023-02-25T19:38:58+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
+        },
+        {
+            "name": "psr/clock",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/clock.git",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Clock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for reading the clock.",
+            "homepage": "https://github.com/php-fig/clock",
+            "keywords": [
+                "clock",
+                "now",
+                "psr",
+                "psr-20",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/clock/issues",
+                "source": "https://github.com/php-fig/clock/tree/1.0.0"
+            },
+            "time": "2022-11-25T14:36:26+00:00"
         },
         {
             "name": "psr/container",
@@ -1063,16 +667,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.27.0",
+            "version": "v1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
-                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+                "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
                 "shasum": ""
             },
             "require": {
@@ -1087,7 +691,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1125,7 +729,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1141,20 +745,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.27.0",
+            "version": "v1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+                "reference": "42292d99c55abe617799667f454222c54c60e229"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
+                "reference": "42292d99c55abe617799667f454222c54c60e229",
                 "shasum": ""
             },
             "require": {
@@ -1169,7 +773,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1208,7 +812,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1224,20 +828,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-07-28T09:04:16+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.27.0",
+            "version": "v1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
                 "shasum": ""
             },
             "require": {
@@ -1246,7 +850,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1291,7 +895,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1307,20 +911,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/process",
-            "version": "v6.2.8",
+            "version": "v6.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "75ed64103df4f6615e15a7fe38b8111099f47416"
+                "reference": "0b5c29118f2e980d455d2e34a5659f4579847c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/75ed64103df4f6615e15a7fe38b8111099f47416",
-                "reference": "75ed64103df4f6615e15a7fe38b8111099f47416",
+                "url": "https://api.github.com/repos/symfony/process/zipball/0b5c29118f2e980d455d2e34a5659f4579847c54",
+                "reference": "0b5c29118f2e980d455d2e34a5659f4579847c54",
                 "shasum": ""
             },
             "require": {
@@ -1352,7 +956,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v6.2.8"
+                "source": "https://github.com/symfony/process/tree/v6.3.4"
             },
             "funding": [
                 {
@@ -1368,7 +972,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T16:20:02+00:00"
+            "time": "2023-08-07T10:39:22+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1459,7 +1063,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "elephox/web": 20
+        "elephox/framework": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

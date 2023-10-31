@@ -2,6 +2,7 @@
 
 namespace Elephox\Builder\Swagger;
 
+use Elephox\Collection\Contract\GenericEnumerable;
 use Elephox\Web\Routing\Contract\RouteData;
 use Elephox\Web\Routing\Contract\Router;
 
@@ -15,9 +16,11 @@ readonly class OpenApiSpecGenerator
 	}
 
 	public function getSpec(): array {
+		$routes = $this->router->getRoutes();
+
 		$spec = [
 			"openapi" => "3.0.0",
-			"paths" => $this->generatePaths(),
+			"paths" => self::generatePaths($routes),
 		];
 
 		$info = $this->info?->toArray();
@@ -28,51 +31,44 @@ readonly class OpenApiSpecGenerator
 		return $spec;
 	}
 
-	private function generateInfo(): array {
-		return [
-			"title" => "My API",
-			"summary" => "My Summary",
-			"description" => "My Description",
-			"version" => "1.0"
-		];
-	}
-
-	private function generatePaths(): array {
-		$this->router->loadRoutes();
-
+	/**
+	 * @param \Elephox\Collection\Contract\GenericEnumerable<RouteData> $routes
+	 * @return array
+	 */
+	private static function generatePaths(GenericEnumerable $routes): array {
 		$paths = [];
 
 		/** @var RouteData $routeData */
-		foreach ($this->router->getLoadedRoutes() as $routeData) {
+		foreach ($routes as $routeData) {
 			$path = $routeData->getTemplate()->getSource();
 			if (str_starts_with($path, '/swagger')) {
 				continue;
 			}
 
-			$paths[$path] = $this->generatePathItem($routeData);
+			$paths[$path] = self::generatePathItem($routeData);
 		}
 
 		return $paths;
 	}
 
-	private function generatePathItem(RouteData $routeData): array {
+	private static function generatePathItem(RouteData $routeData): array {
 		$methods = [
 			"summary" => $routeData->getHandlerName(),
 		];
 
 		foreach ($routeData->getMethods() as $method) {
-			$methods[mb_strtolower($method)] = $this->generateOption($method, $routeData);
+			$methods[mb_strtolower($method)] = self::generateOption($method, $routeData);
 		}
 
 		return $methods;
 	}
 
-	private function generateOption(string $method, RouteData $routeData): array {
+	private static function generateOption(string $method, RouteData $routeData): array {
 		$option = [
 			'operationId' => $method . " " . $routeData->getTemplate()->getSource(),
 		];
 
-		$parameters = $this->generateParameters($routeData);
+		$parameters = self::generateParameters($routeData);
 		if (count($parameters) > 0) {
 			$option['parameters'] = $parameters;
 		}
@@ -80,20 +76,30 @@ readonly class OpenApiSpecGenerator
 		return $option;
 	}
 
-	private function generateParameters(RouteData $routeData): array {
+	private static function generateParameters(RouteData $routeData): array {
 		$parameters = [];
 
-		foreach ($routeData->getTemplate()->getVariableNames() as $variableName) {
+		/**
+		 * @var \Elephox\Web\Routing\RouteTemplateVariable $variable
+		 */
+		foreach ($routeData->getTemplate()->getVariables() as $variable) {
 			$parameters[] = [
-				'name' => $variableName,
+				'name' => $variable->name,
 				'in' => 'path',
 				'required' => true,
 				'schema' => [
-					'type' => 'string',
+					'type' => self::translateParameterType($variable->type),
 				],
 			];
 		}
 
 		return $parameters;
+	}
+
+	private static function translateParameterType(string $variableType): string {
+		return match ($variableType) {
+			'int' => 'integer',
+			default => 'string',
+		};
 	}
 }

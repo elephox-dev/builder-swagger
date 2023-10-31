@@ -4,24 +4,17 @@ declare(strict_types=1);
 namespace Elephox\Builder\Swagger;
 
 use Elephox\DI\Contract\ServiceCollection;
-use Elephox\Web\Routing\Contract\Router;
+use Elephox\Web\Routing\Contract\RouterBuilder as RouterBuilderContract;
 
 trait AddsSwagger {
-	abstract public function getServices(): ServiceCollection;
+	abstract protected function getServices(): ServiceCollection;
+
+	abstract public function getRouter(): RouterBuilderContract;
 
 	public function addSwagger(?OpenApiInfo $info = null): void
 	{
-		$this->getServices()->addSingleton(OpenApiSpecGenerator::class, factory: function (Router $router) use ($info): OpenApiSpecGenerator {
-			return new OpenApiSpecGenerator($router, $info);
-		});
-
-		$this->getServices()->addSingleton(SwaggerController::class);
-
-		$swaggerLoader = $this->getServices()
-			->resolver()
-			->instantiate(SwaggerRouteLoader::class);
-
-		$router = $this->getServices()->requireService(Router::class);
-		$router->addLoader($swaggerLoader);
+		$this->getServices()->addSingleton(OpenApiInfo::class, instance: $info);
+		$this->getServices()->addSingleton(OpenApiSpecGenerator::class);
+		$this->getRouter()->addLoader(new SwaggerRouteLoader());
 	}
 }

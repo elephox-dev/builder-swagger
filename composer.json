@@ -4,7 +4,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2 <8.4",
-        "elephox/web": "dev-develop"
+        "elephox/framework": "dev-develop"
     },
     "autoload": {
         "psr-4": {
